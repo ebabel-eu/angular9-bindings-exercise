@@ -12,4 +12,7 @@ export class EvenComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onNumberUpdated($event: number) {
+    console.log($event);
+  }
 }
