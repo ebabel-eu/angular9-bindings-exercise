@@ -6,14 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./odd.component.css']
 })
 export class OddComponent implements OnInit {
-  @Input() numberUpdated: number;
+  @Input() randomNumbers: number[];
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onNumberUpdated($event: number) {
-    console.log($event);
   }
 }
