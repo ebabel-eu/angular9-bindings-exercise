@@ -8,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class GameControlComponent implements OnInit {
   randomNumber: number;
   @Output() numberUpdated = new EventEmitter<number>();
-  timerId: NodeJS.Timeout = null;
+  timerId: number = null;
   speed: number = 1000;
 
   constructor() { }
@@ -16,13 +16,15 @@ export class GameControlComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  startGame() {
+  private randomiseNumber(): void {
     this.randomNumber = Math.floor(Math.random() * 999);
-    this.numberUpdated.emit(this.randomNumber);  
+    this.numberUpdated.emit(this.randomNumber);
+  }
 
-    this.timerId = setInterval(() => {
-      this.randomNumber = Math.floor(Math.random() * 999);
-      this.numberUpdated.emit(this.randomNumber);  
+  startGame() {
+    this.randomiseNumber();
+    this.timerId = window.setInterval(() => {
+      this.randomiseNumber();
     }, this.speed);
   }
 
